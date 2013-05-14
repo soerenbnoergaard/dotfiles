@@ -1,0 +1,133 @@
+# Conky configuration
+#
+# the list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# The additions to this config require curl and xsltproc be installed
+
+# set to yes if you want Conky to be forked in the background
+background no
+
+# Use Xft?
+use_xft yes
+
+# Xft font when Xft is enabled
+# xftfont Bitstream Vera Sans Mono:size=8
+xftfont Ubuntu Mono:size=10
+# xftfont Anonymous Pro:size=10
+
+# Text alpha when using Xft
+xftalpha 0.8
+
+# Update interval in seconds ((600)
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+
+# If own_window is yes, you may use type normal, desktop or override
+#own_window_type normal
+own_window_type override
+
+# To place it I think
+own_window_class conky
+
+# Use pseudo transparency with own_window?
+own_window_transparent yes
+
+# If own_window_transparent is set to no, you can set the background colour here
+own_window_colour hotpink
+
+# If own_window is yes, these window manager hints may be used
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Max window size
+maximum_width 810
+
+# Minimum size of text area
+minimum_size 280 5
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Draw borders around graphs
+draw_graph_borders yes
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_margin 4
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color FFFFFF
+default_shade_color FFFFFF
+default_outline_color FFFFFF
+
+# Text alignment, other possible values are commented
+#alignment top_left
+alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+#alignment none
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 10
+gap_y 50
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# Add spaces to keep things from moving about?  This only affects certain
+# objects.
+use_spacer no
+
+# Text buffer size - to show everything
+text_buffer_size 10000
+
+# stuff after 'TEXT' will be formatted on screen
+
+TEXT
+${font Zekton:size=16}${color #D06262}${execi 3600 date +"Uge: %V"}$alignr${time  %H:%M:%S} 
+$font${color #888888}Denne uge:
+$color${execi 60 cat ~/.cache/kalender-aau-now.txt| iconv -f UTF8 -t ISO885915}
+
+${color #888888}Naeste uge:
+$color${execi 60 cat ~/.cache/kalender-aau-next.txt| iconv -f UTF8 -t ISO885915}
+
+${color #62B1D0}${execpi 60 cat ~/.cache/kalender.txt | iconv -f UTF8 -t ISO885915 | sed '/^$/d'}
+
+${font Zekton:size=14}${color #888888}Noter:
+$font$color${execpi 20 sh -c "~/.conky/mkd2conky; cat ~/.conky/notes.conky" | iconv -f UTF8 -t ISO885915}
