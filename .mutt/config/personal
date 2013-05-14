@@ -1,0 +1,27 @@
+# vim: ft=muttrc
+
+## Receive options.
+set imap_user=soerenbnoergaard@gmail.com
+set imap_pass=$my_pw_personal
+set folder = imaps://soerenbnoergaard@imap.gmail.com/
+set spoolfile = +INBOX
+set postponed = +Drafts
+unset record
+set editor = vim
+
+## Send options.
+set smtp_url=smtps://soerenbnoergaard@smtp.gmail.com
+set smtp_pass=$my_pw_personal
+set realname='Søren Nørgaard'
+set from=soerenbnoergaard@gmail.com
+set ssl_force_tls = yes
+unset ssl_starttls
+
+# Goobook
+set query_command="goobook -c ~/.mutt/goobook/personal.goobookrc query '%s'"
+bind editor \t complete-query ## tab completion for contacts :)
+macro index,pager a "<pipe-message>goobook -c ~/.mutt/goobook/personal.goobookrc add<return>" "add sender to google contacts"
+macro index,pager gr "!goobook -c ~/.mutt/goobook/personal.goobookrc reload\n" "Goobook reload"
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_user=soerenbnoergaard@gmail.com imap_pass=$my_pw_personal

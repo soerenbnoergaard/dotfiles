@@ -1,0 +1,146 @@
+! vim: fdm=marker foldenable
+! xrdb -merge ~/.Xdefaults
+!!! Xfig {{{
+!!! Set some defaults for Xfig
+!! Latex in xfig
+! Fig.inches: false
+! Fig.startfontsize: 8
+! Fig.userunit: cm
+! Fig.startgridmode: 1  
+! Fig.startposnmode: 1
+! Fig.landscape: false
+! Fig.paper_size: A4
+! Fig.latexfonts: true
+! Fig.startlatexFont: Default
+! Fig.specialtext: true
+! Fig.zoom: 4.0
+! Fig.exportLanguage: pdftex
+!! Regular settings
+Fig.inches: false
+Fig.startfontsize: 8
+Fig.userunit: cm
+Fig.startgridmode: 1  
+Fig.startposnmode: 1
+Fig.landscape: false
+Fig.paper_size: A4
+Fig.startpsFont: Helvetica
+Fig.zoom: 4.0
+Fig.exportLanguage: pdf
+! }}}
+!!! xterm {{{
+XTerm*bellIsUrgent:  true
+! xterm*font: -*-courier-medium-r-*-*-18-*-*-*-*-*-*-*
+! xterm*boldFont: -*-courier-medium-r-*-*-18-*-*-*-*-*-*-*
+xterm*faceName: TerminalVector
+xterm*faceSize: 18
+xterm*loginShell: true
+xterm*vt100*geometry: 80x24
+xterm*saveLines: 2000
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*termName: xterm-color
+xterm*eightBitInput: false
+! xterm*foreground: rgb:00/a8/00
+xterm*foreground: rgb:a8/a8/a8
+xterm*background: rgb:00/00/00
+xterm*color0: rgb:00/00/00
+xterm*color1: rgb:a8/00/00
+xterm*color2: rgb:00/a8/00
+xterm*color3: rgb:a8/54/00
+xterm*color4: rgb:00/00/a8
+xterm*color5: rgb:a8/00/a8
+xterm*color6: rgb:00/a8/a8
+xterm*color7: rgb:a8/a8/a8
+xterm*color8: rgb:54/54/54
+xterm*color9: rgb:fc/54/54
+xterm*color10: rgb:54/fc/54
+xterm*color11: rgb:fc/fc/54
+xterm*color12: rgb:54/54/fc
+xterm*color13: rgb:fc/54/fc
+xterm*color14: rgb:54/fc/fc
+xterm*color15: rgb:fc/fc/fc
+xterm*boldMode: false
+xterm*colorBDMode: true
+xterm*colorBD: rgb:fc/fc/fc
+! }}}
+!!! URXVT {{{
+! Initial
+URxvt.geometry: 81x26
+URxvt.urgentOnBell:  true
+URxvt.saveLines: 12000
+URxvt.depth: 32
+
+! Font 
+URxvt.font: xft:Dina:size=12
+URxvt.boldFont: xft:Dina:bold:size=12
+
+! Scroll
+URxvt.scrollBar: false
+URxvt.keysym.Meta-Shift-Up: command:\033]720;1\007
+URxvt.keysym.Meta-Shift-Down: command:\033]721;1\007
+
+! Links in M-U-mode
+URxvt.perl-ext:      default,url-select
+URxvt.keysym.M-u:    perl:url-select:select_next
+URxvt.url-select.launcher:  exo-open --launch WebBrowser
+URxvt.url-select.underline: true
+ 
+! Perl
+URxvt.perl-ext-common:  default,tabbed,keyboard-select,clipboard,-searchable-scrollback
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+! Clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.clipboard.copycmd:  xclip -i -selection "clipboard"
+URxvt.clipboard.pastecmd: xclip -o -selection "clipboard"
+
+! Annoying things
+URxvt.iso14755_52: false
+URxvt.searchable-scrollback: CM-s
+
+! Dark theme {{{
+! Tabbar
+URxvt.tabbed.tabbar-fg: 15
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg:    15
+URxvt.tabbed.tab-bg:    8
+
+URxvt.background:    #111111
+URxvt.foreground:    #BBBBBB
+! URxvt.foreground:    #219f3c
+
+
+!black
+*color0: #111111
+*color8: #666666
+
+!red
+*color1: #d20a05
+*color9: #9f080d
+
+!green 
+*color2: #0ac20c
+*color10: #219f3c
+
+!yellow
+*color3: #c7d20a
+*color11: #afb909
+
+!blue
+*color4: #0a3cde
+*color12: #081cdf
+
+!magenta
+*color5: #b00af2
+*color13: #8b08bf
+
+!cyan
+*color6: #0ae6f2
+*color14: #08b6bf
+
+!white
+*color7: #aaaaaa
+*color15: #cccccc
+! }}}
+! }}}

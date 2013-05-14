@@ -1,0 +1,30 @@
+## General options
+set header_cache = "~/.cache/mutt"
+set imap_check_subscribed
+set imap_keepalive = 300
+unset imap_passive
+set mail_check = 60
+set mbox_type=Maildir
+source ~/.mutt/color/ivy_league.theme
+auto_view text/html                  # HTML
+alternative_order text/plain text/enriched text/html
+source "gpg2 -dq "~/.mutt/pw/my-pwds.gpg" |"
+
+## Shortcuts
+macro index,pager ga1 '<sync-mailbox><enter-command>source ~/.mutt/config/personal<enter><change-folder>!<enter>'
+macro index,pager ga2 '<sync-mailbox><enter-command>source ~/.mutt/config/gyg<enter><change-folder>!<enter>'
+macro index,pager ga3 '<sync-mailbox><enter-command>source ~/.mutt/config/aau<enter><change-folder>!<enter>'
+
+## ACCOUNT1
+source "~/.mutt/config/gyg"
+# Here we use the $folder variable that has just been set in the sourced file.
+# We must set it right now otherwise the 'folder' variable will change in the next sourced file.
+folder-hook $folder 'source ~/.mutt/config/gyg'
+
+## ACCOUNT2
+source "~/.mutt/config/aau"
+folder-hook /*snarga11@student.aau.dk/ 'source ~/.mutt/config/aau'
+
+## ACCOUNT3
+source "~/.mutt/config/personal"
+folder-hook /*soerenbnoergaard@gmail.com/ 'source ~/.mutt/config/personal'

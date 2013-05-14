@@ -1,0 +1,27 @@
+# vim: ft=muttrc
+
+## Receive options.
+set imap_user=getyourgundk@gmail.com
+set imap_pass=$my_pw_gyg
+set folder = imaps://getyourgundk@imap.gmail.com/
+set spoolfile = +INBOX
+set postponed = +Drafts
+unset record
+set editor = vim
+
+## Send options.
+set smtp_url=smtps://getyourgundk@smtp.gmail.com
+set smtp_pass=$my_pw_gyg
+set realname='Get Your Gun'
+set from=getyourgundk@gmail.com
+set ssl_force_tls = yes
+unset ssl_starttls
+
+# Goobook
+set query_command="goobook -c ~/.mutt/goobook/gyg.goobookrc query '%s'"
+bind editor \t complete-query ## tab completion for contacts :)
+macro index,pager a "goobook -c ~/.mutt/goobook/gyg.goobookrc add" "add the sender address to Google contacts"
+macro index,pager gr "!goobook -c ~/.mutt/goobook/gyg.goobookrc reload\n" "Goobook reload"
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_user=getyourgundk@gmail.com imap_pass=$my_pw_gyg"

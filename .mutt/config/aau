@@ -1,0 +1,24 @@
+# vim: ft=muttrc
+
+## Receive options.
+set imap_user=snarga11@student.aau.dk
+set imap_pass=$my_pw_personal
+set folder = imaps://snarga11@mail.aau.dk
+set spoolfile = +INBOX
+set postponed = +Drafts
+set editor = vim
+
+## Send options.
+set record = +Sent
+set smtp_url=smtp://snarga11@student.aau.dk@smtp.aau.dk:587/
+set smtp_pass=$my_pw_personal
+set realname='Søren Nørgaard (AAU)'
+set from=snarga11@student.aau.dk
+set hostname="smtp.aau.dk"
+
+set smtp_authenticators="LOGIN"
+set ssl_force_tls = yes
+set ssl_starttls
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_user=snarga11@student.aau.dk imap_pass=$my_pw_personal"
