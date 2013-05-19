@@ -5,7 +5,7 @@ set imap_keepalive = 300
 unset imap_passive
 set mail_check = 60
 set mbox_type=Maildir
-source ~/.mutt/color/ivy_league.theme
+# source ~/.mutt/color/ivy_league.theme
 auto_view text/html                  # HTML
 alternative_order text/plain text/enriched text/html
 source "gpg2 -dq "~/.mutt/pw/my-pwds.gpg" |"
