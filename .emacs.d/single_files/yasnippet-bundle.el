@@ -3940,8 +3940,8 @@ Use multiple times to bind different COMMANDs to the same KEY."
 ;;; snippets for cc-mode
 (yas/define-snippets 'cc-mode
 		     '(("do" "do{\n    $0\n} while (${1:condition});" "do { ... } while (...)" nil nil nil nil nil)
-		       ("for" "for (${1:int i = 0}; ${2:i < N}; ${3:++i}){\n    $0\n}" "for (...; ...; ...) { ... }" nil nil nil nil nil)
-		       ("if" "if (${1:condition}){\n    $0\n}" "if (...) { ... }" nil nil nil nil nil)
+		       ("for" "for (${1:int i = 0}; ${2:i < N}; ${3:++i}) {\n    $0\n}" "for (...; ...; ...) { ... }" nil nil nil nil nil)
+		       ("if" "if (${1:condition}) {\n    $0\n}" "if (...) { ... }" nil nil nil nil nil)
 		       ("incl" "#include \"$1\"" "#include \"...\"" nil nil nil nil nil)
 		       ("inc" "#include <$1>" "#include <...>" nil nil nil nil nil)
 		       ("main" "int main (int argc, char *argv[])\n{\n    $0\n    return 0;\n}\n" "int main(argc, argv) { ... }" nil nil nil nil nil)
