@@ -37,11 +37,11 @@ function! sncolor:SwapTheme()
         colorscheme zmrok
     endif
     if g:myTheme == 3
-        set background=dark
-        colorscheme scame
+        set background=light
+        colorscheme snlight
     endif
     if g:myTheme == 4
-        set background=dark
+        set background=light
         colorscheme github
     endif
 endf
@@ -82,8 +82,9 @@ function! MyComment()
 endf
 
 function sn:LasseMode()
-    colorscheme github
-    set guifont=DejaVu\ Sans\ Mono\ 11
+    colorscheme snlight
+    " set guifont=DejaVu\ Sans\ Mono\ 11
+    set guifont=Ubuntu\ Mono\ 14
 endf
 command LasseMode :call sn:LasseMode()
 " }}}
