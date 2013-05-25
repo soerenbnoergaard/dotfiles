@@ -3946,7 +3946,8 @@ Use multiple times to bind different COMMANDs to the same KEY."
 		       ("inc" "#include <$1>" "#include <...>" nil nil nil nil nil)
 		       ("main" "int main (int argc, char *argv[])\n{\n    $0\n    return 0;\n}\n" "int main(argc, argv) { ... }" nil nil nil nil nil)
 		       ("once" "#ifndef ${1:_`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`_H_}\n#define $1\n\n$0\n\n#endif /* $1 */" "#ifndef XXX; #define XXX; #endif" nil nil nil nil nil)
-		       ("struct" "struct ${1:name}\n{\n    $0\n};" "struct ... { ... }" nil nil nil nil nil))
+		       ("struct" "struct ${1:name}\n{\n    $0\n};" "struct ... { ... }" nil nil nil nil nil)
+		       ("//" "/* $1 */$0" "Comments" nil nil nil nil nil))
 		     '(text-mode))
 
 
