@@ -29,10 +29,9 @@ Fig.exportLanguage: pdf
 ! }}}
 !!! xterm {{{
 XTerm*bellIsUrgent:  true
-! xterm*font: -*-courier-medium-r-*-*-18-*-*-*-*-*-*-*
-! xterm*boldFont: -*-courier-medium-r-*-*-18-*-*-*-*-*-*-*
-xterm*faceName: TerminalVector
-xterm*faceSize: 18
+! xterm*faceName: TerminalVector ! Dos like font
+xterm*faceName: Ubuntu Mono
+xterm*faceSize: 28
 xterm*loginShell: true
 xterm*vt100*geometry: 80x24
 xterm*saveLines: 2000
