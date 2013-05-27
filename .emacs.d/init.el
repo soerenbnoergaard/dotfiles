@@ -78,10 +78,10 @@
 (load "folding" 'nomessage 'noerror)
 (folding-mode-add-find-file-hook)
 
-;; (setq                                                ;; Scroll one line at a time
-;;  scroll-margin 0                  
-;;  scroll-conservatively 100000
-;;  scroll-preserve-screen-position 1)
+(setq                                                ;; Scroll one line at a time
+ scroll-margin 0                  
+ scroll-conservatively 100000
+ scroll-preserve-screen-position 1)
 ;;}}}
 
 ;; GUI 
@@ -94,10 +94,16 @@
   (set-default-font "DejaVu Sans Mono-11")
   (modify-frame-parameters nil '((wait-for-wm . nil))) ;; Ignore WM geometry change
   )
+
+(unless window-system
+  (menu-bar-mode nil)
+)
+
 ;;}}}
 
 ;; Hooks 
 ;;{{{
+
 (add-hook 'c-mode-common-hook 
           (lambda()
             (local-set-key (kbd "C-c C-<right>") 'hs-show-block)    ;; Fold with these keys
@@ -144,10 +150,14 @@
             (local-set-key (kbd "C-c C-<up>")  'folding-whole-buffer)
             (local-set-key (kbd "C-c C-<down>")  'folding-open-buffer)
             ))
+
 ;;}}}
 
 ;; Keymapping 
 ;;{{{
-(global-set-key [f12] 'flyspell-buffer)         ;; Spellcheck buffer
-(global-set-key [f9] 'ispell-word)          ;; Spellcheck word
+(global-set-key [f12] 'flyspell-buffer)
+(global-set-key [f9] 'ispell-word)
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+
 ;;}}}

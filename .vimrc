@@ -141,6 +141,8 @@ nnoremap <Leader>mru :MRU<CR>
 nnoremap + :
 noremap <Leader>/ <Esc>:let @/=""<CR>
 noremap <Leader>7 <Esc>:let @/=""<CR>
+noremap # #<Esc>:let @/=""<CR>
+noremap * *<Esc>:let @/=""<CR>
 nnoremap <F12> :call MySpellLang()<CR>
 nnoremap <Space> @q
 nnoremap <leader>md :%!markdown --html4tags<cr>
