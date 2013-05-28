@@ -463,12 +463,12 @@ function! s:SetupSyntax()
         syn match bufExplorerUnlBuf    /^\s*\d\+u.*/
 
         hi def link bufExplorerBufNbr Number
-        hi def link bufExplorerMapping NonText
+        hi def link bufExplorerMapping Keyword
         hi def link bufExplorerHelp Special
         hi def link bufExplorerOpenIn Identifier
         hi def link bufExplorerSortBy String
-        hi def link bufExplorerSplit NonText
-        hi def link bufExplorerTitle NonText
+        hi def link bufExplorerSplit Keyword
+        hi def link bufExplorerTitle Keyword
         hi def link bufExplorerSortType bufExplorerSortBy
         hi def link bufExplorerToggleSplit bufExplorerSplit
         hi def link bufExplorerToggleOpen bufExplorerOpenIn

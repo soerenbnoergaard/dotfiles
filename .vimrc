@@ -116,7 +116,9 @@ let g:Tex_IgnoredWarnings =
             \'There were undefined references'."\n".
             \'LaTeX Warning:' . "\n".
             \'Citation %.%# undefined'
+let g:tex_indent_items = 1
 let g:Tex_IgnoreLevel = 8
+
 " Nerd tree
 let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI  = 1
@@ -143,6 +145,9 @@ noremap <Leader>/ <Esc>:let @/=""<CR>
 noremap <Leader>7 <Esc>:let @/=""<CR>
 noremap # #<Esc>:let @/=""<CR>
 noremap * *<Esc>:let @/=""<CR>
+nnoremap / /\v
+nnoremap j gj
+nnoremap k gk
 nnoremap <F12> :call MySpellLang()<CR>
 nnoremap <Space> @q
 nnoremap <leader>md :%!markdown --html4tags<cr>
@@ -167,6 +172,9 @@ nnoremap <C-u> <C-u>M
 nnoremap <C-f> <C-f>M
 nnoremap <C-b> <C-b>M
 nnoremap <Leader>co :call MyComment()<CR>
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's
@@ -186,8 +194,9 @@ endw
 
 set timeout ttimeoutlen=50
 
-" Easymotion on <leader>w
-let g:EasyMotion_leader_key = '<Leader>'
+" Save on losing focus
+au FocusLost * :wa
+
 " }}}
 " --- Filetypes ----------------------------------------------------------- {{{
 augroup filetypedetect
@@ -242,6 +251,7 @@ set winaltkeys=no                 " no alt key gui-menu shortcuts
 set encoding=utf-8                " use utf8 encoding
 set clipboard=unnamedplus         " use system clipboard, unix
 set ofu=syntaxcomplete#Complete   " omnicompletion on
+set hidden                        " hide buffers, don't close them
 
 " Layout settings
 set nofoldenable                  " don't fold
