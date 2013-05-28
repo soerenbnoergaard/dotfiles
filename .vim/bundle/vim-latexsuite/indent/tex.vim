@@ -164,28 +164,12 @@ function GetTeXIndent()
     ""if line =~ '^\s*\\begin{\(.*\)}'  && line !~ 'verbatim' 
     " LH modification : \begin does not always start a line
     if line =~ '\\begin{.*}'  && line !~ g:tex_noindent_env
-
         let ind = ind + &sw
-
-        if g:tex_indent_items
-            " Add another sw for item-environments
-            if line =~ g:tex_itemize_env
-                let ind = ind + &sw
-            endif
-        endif
     endif
 
 
     " Subtract a 'shiftwidth' when an environment ends
     if cline =~ '^\s*\\end' && cline !~ g:tex_noindent_env
-
-        if g:tex_indent_items
-            " Remove another sw for item-environments
-            if cline =~ g:tex_itemize_env
-                let ind = ind - &sw
-            endif
-        endif
-
         let ind = ind - &sw
     endif
 
