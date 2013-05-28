@@ -251,7 +251,6 @@ set winaltkeys=no                 " no alt key gui-menu shortcuts
 set encoding=utf-8                " use utf8 encoding
 set clipboard=unnamedplus         " use system clipboard, unix
 set ofu=syntaxcomplete#Complete   " omnicompletion on
-set hidden                        " hide buffers, don't close them
 
 " Layout settings
 set nofoldenable                  " don't fold
