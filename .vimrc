@@ -143,8 +143,6 @@ nnoremap <Leader>mru :MRU<CR>
 nnoremap + :
 noremap <Leader>/ <Esc>:let @/=""<CR>
 noremap <Leader>7 <Esc>:let @/=""<CR>
-noremap # #<Esc>:let @/=""<CR>
-noremap * *<Esc>:let @/=""<CR>
 nnoremap / /\v
 nnoremap j gj
 nnoremap k gk
@@ -205,7 +203,7 @@ augroup filetypedetect
     au! BufNewFile,BufRead *.md     setlocal ft=markdown
     au! BufNewFile,BufRead *.vala   setlocal ft=vala
     au! BufNewFile,BufRead *.jemdoc setlocal ft=jemdoc spell spelllang=da
-    au! BufNewFile,BufRead *.tex    setlocal spell spelllang=da ft=tex
+    au! BufNewFile,BufRead *.tex    setlocal ft=tex
     au! BufNewFile,BufRead *.psm    setlocal ft=asm
     au! BufRead,BufNewFile *.ucf    setlocal ft=conf
     au! BufNewFile,BufRead *.org    call org#SetOrgFileType()
@@ -233,6 +231,7 @@ set tabstop=4                     " tab width
 set shiftwidth=4                  " indention
 set expandtab                     " use spaces
 set autoindent                    " autoindent
+set softtabstop=4                 " backspace deletes indents
 
 " Line break settings
 set wrap                          " soft wrap
@@ -245,7 +244,7 @@ set hlsearch                      " highlight search results
 
 " Compatiliy settings
 set nocompatible                  " it's 2012 - don't be compatible
-set backspace=2                   " use regular backspace
+" set backspace=2                   " use regular backspace
 set mouse=a                       " use mouse
 set winaltkeys=no                 " no alt key gui-menu shortcuts
 set encoding=utf-8                " use utf8 encoding
