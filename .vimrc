@@ -202,7 +202,7 @@ augroup filetypedetect
     au! BufNewFile,BufRead *.ino    setlocal ft=cpp
     au! BufNewFile,BufRead *.md     setlocal ft=markdown
     au! BufNewFile,BufRead *.vala   setlocal ft=vala
-    au! BufNewFile,BufRead *.jemdoc setlocal ft=jemdoc spell spelllang=da
+    au! BufNewFile,BufRead *.jemdoc setlocal ft=jemdoc
     au! BufNewFile,BufRead *.tex    setlocal ft=tex
     au! BufNewFile,BufRead *.psm    setlocal ft=asm
     au! BufRead,BufNewFile *.ucf    setlocal ft=conf
