@@ -156,7 +156,7 @@ nnoremap <M-v> :e $MYVIMRC<CR>
 nnoremap <Leader>ta :Tabularize /
 vnoremap <Leader>ta :Tabularize /
 nnoremap <Leader>te :Term<CR><CR>
-xnoremap <space>c :!octave --silent \| cut -c8-<cr>
+xnoremap <Leader>ca :!octave --silent \| cut -c8-<cr>
 nnoremap <leader>td :TaskList<CR>
 nnoremap <leader>pa :exec "w !vpaste ft=".&ft<CR>
 vnoremap <leader>pa <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
@@ -175,6 +175,10 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 vnoremap <leader>lc :normal 0i// <esc>$
 nnoremap <leader>lc :normal 0i// <esc>$
+"
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's
@@ -235,19 +239,20 @@ set softtabstop=4                 " backspace deletes indents
 set wrap                          " soft wrap
 set linebreak                     " wrap words
 
-" Search settings
+" Search and macro settings
 set incsearch                     " search as you type
 set ignorecase                    " case sensitive on search
 set hlsearch                      " highlight search results
+set lazyredraw                    " when executing macros, don't redraw
 
 " Compatiliy settings
 set nocompatible                  " it's 2012 - don't be compatible
-" set backspace=2                   " use regular backspace
 set mouse=a                       " use mouse
 set winaltkeys=no                 " no alt key gui-menu shortcuts
 set encoding=utf-8                " use utf8 encoding
 set clipboard=unnamedplus         " use system clipboard, unix
 set ofu=syntaxcomplete#Complete   " omnicompletion on
+set autoread                      " auto read if file changes outside
 
 " Layout settings
 set nofoldenable                  " don't fold
