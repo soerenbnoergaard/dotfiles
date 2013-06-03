@@ -173,6 +173,8 @@ nnoremap <Leader>co :call MyComment()<CR>
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
+vnoremap <leader>lc :normal 0i// <esc>$
+nnoremap <leader>lc :normal 0i// <esc>$
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's
@@ -191,10 +193,6 @@ while c <= 'z'
 endw
 
 set timeout ttimeoutlen=50
-
-" Save on losing focus
-au FocusLost * :wa
-
 " }}}
 " --- Filetypes ----------------------------------------------------------- {{{
 augroup filetypedetect
@@ -279,6 +277,7 @@ endif
 if has("gui_running")
     set columns=80 lines=24
     set guifont=Dina\ 12
+    set guioptions=aegit
     call sncolor:SwapTheme()
     nnoremap <f2> :call sncolor:SwapTheme()<CR>
 else
