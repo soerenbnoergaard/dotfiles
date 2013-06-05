@@ -143,7 +143,6 @@ nnoremap <Leader>mru :MRU<CR>
 nnoremap + :
 noremap <Leader>/ <Esc>:let @/=""<CR>
 noremap <Leader>7 <Esc>:let @/=""<CR>
-nnoremap / /\v
 nnoremap j gj
 nnoremap k gk
 nnoremap <F12> :call MySpellLang()<CR>

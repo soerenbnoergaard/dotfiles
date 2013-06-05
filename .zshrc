@@ -48,6 +48,7 @@ alias rap='cd /home/soren/svn/project4/rap'
 alias g='gvim --remote-tab-silent'
 alias picoasm='picoasm -t ~/.picoasm/ROM_form.vhd'
 alias dirclip='pwd|xclip'
+alias octave='octave --silent'
 
 # Git svn
 alias Ci="git commit -a"
