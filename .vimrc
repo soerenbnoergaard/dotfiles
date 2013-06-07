@@ -137,8 +137,6 @@ nnoremap <Leader>ru :!./%<<CR>
 nnoremap <Leader>fo :set guifont=*<CR>
 nnoremap <F10> :NERDTreeToggle<CR>
 nnoremap <Leader>bu :buffers<CR>
-inoremap ½ $
-cnoremap ½ ~
 nnoremap <Leader>mru :MRU<CR>
 nnoremap + :
 noremap <Leader>/ <Esc>:let @/=""<CR>
