@@ -143,6 +143,7 @@ nnoremap <Leader>mru :MRU<CR>
 nnoremap + :
 noremap <Leader>/ <Esc>:let @/=""<CR>
 noremap <Leader>7 <Esc>:let @/=""<CR>
+nnoremap / /\v
 nnoremap j gj
 nnoremap k gk
 nnoremap <F12> :call MySpellLang()<CR>
@@ -176,8 +177,10 @@ vnoremap <leader>lc :normal 0i// <esc>$
 nnoremap <leader>lc :normal 0i// <esc>$
 "
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <M-j> mz:m+<cr>`z 
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's
