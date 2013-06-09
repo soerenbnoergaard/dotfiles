@@ -1,24 +1,5 @@
 " vim: fdm=marker foldenable
 " --- Custom functions and Commands --------------------------------------- {{{
-" word -> \begin{word} ... \end{word}
-function! snlatex:WordToEnvironment()
-    normal diw
-    let s:curenv = @
-    silent exe "normal! i" . '\begin{' . s:curenv . "}\<CR>"
-    silent exe "normal! i" . '\end{' . s:curenv . "}"
-    silent exe "normal k2==o"
-    startinsert
-endfunction
-
-" word -> \word{}
-function! snlatex:WordToCommand()
-    normal diw
-    let s:curcmd = @
-    silent exe "normal! i" . '\' . s:curcmd . "{}"
-    silent exe "normal! T{a"
-    startinsert
-endfunction
-
 " Swap color theme - dark/light
 let g:myTheme = 0
 function! sncolor:SwapTheme()
@@ -34,7 +15,7 @@ function! sncolor:SwapTheme()
     endif
     if g:myTheme == 2
         set background=dark
-        colorscheme zmrok
+        colorscheme oxygen
     endif
     if g:myTheme == 3
         set background=light
@@ -83,7 +64,6 @@ endf
 
 function sn:LasseMode()
     colorscheme snlight
-    " set guifont=DejaVu\ Sans\ Mono\ 11
     set guifont=Ubuntu\ Mono\ 14
 endf
 command LasseMode :call sn:LasseMode()
