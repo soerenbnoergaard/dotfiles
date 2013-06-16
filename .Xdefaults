@@ -109,7 +109,6 @@ URxvt.background:    #111111
 URxvt.foreground:    #BBBBBB
 ! URxvt.foreground:    #219f3c
 
-
 !black
 *color0: #111111
 *color8: #666666
