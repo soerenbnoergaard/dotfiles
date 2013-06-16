@@ -98,47 +98,29 @@ URxvt.clipboard.pastecmd: xclip -o -selection "clipboard"
 URxvt.iso14755_52: false
 URxvt.searchable-scrollback: CM-s
 
-! Dark theme {{{
 ! Tabbar
 URxvt.tabbed.tabbar-fg: 15
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg:    15
 URxvt.tabbed.tab-bg:    8
 
-URxvt.background:    #111111
-URxvt.foreground:    #BBBBBB
-! URxvt.foreground:    #219f3c
-
-!black
-*color0: #111111
-*color8: #666666
-
-!red
-*color1: #d20a05
-*color9: #9f080d
-
-!green 
-*color2: #0ac20c
-*color10: #219f3c
-
-!yellow
-*color3: #c7d20a
-*color11: #afb909
-
-!blue
-*color4: #0a3cde
-*color12: #081cdf
-
-!magenta
-*color5: #b00af2
-*color13: #8b08bf
-
-!cyan
-*color6: #0ae6f2
-*color14: #08b6bf
-
-!white
-*color7: #aaaaaa
-*color15: #cccccc
-! }}}
+! Molokai theme
+URxvt*background: #101010
+URxvt*foreground: #d0d0d0
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
 ! }}}
