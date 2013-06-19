@@ -106,6 +106,8 @@
 
 (add-hook 'c-mode-common-hook 
           (lambda()
+            (setq tab-width 8)
+            (setq c-basic-offset 8)
             (local-set-key (kbd "C-c C-<right>") 'hs-show-block)    ;; Fold with these keys
             (local-set-key (kbd "C-c C-<left>")  'hs-hide-block)
             (local-set-key (kbd "C-c C-<up>")    'hs-hide-all)

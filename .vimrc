@@ -178,42 +178,13 @@ endw
 
 set timeout ttimeoutlen=50
 " }}}
-" --- Filetypes ----------------------------------------------------------- {{{
-augroup filetypedetect
-    au! BufNewFile,BufRead *.wiki   setf     wiki
-    au! BufNewFile,BufRead *.ino    setlocal ft=cpp
-    au! BufNewFile,BufRead *.md     setlocal ft=markdown
-    au! BufNewFile,BufRead *.vala   setlocal ft=vala
-    au! BufNewFile,BufRead *.jemdoc setlocal ft=jemdoc
-    au! BufNewFile,BufRead *.tex    setlocal ft=tex
-    au! BufNewFile,BufRead *.psm    setlocal ft=asm
-    au! BufRead,BufNewFile *.ucf    setlocal ft=conf
-    au! BufNewFile,BufRead *.org    call org#SetOrgFileType()
-augroup END
-
-augroup settingsforfiletypes
-    au! FileType asm setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
-    au! FileType python setlocal autoindent tabstop=4 shiftwidth=4
-    au! FileType perl setlocal ft=perl6
-    au! FileType cpp setlocal ft=c
-augroup END
-
-augroup keymapforfiletypes
-    au! BufNewFile,BufRead *.m               nnoremap <buffer> <leader>ll :!octave --silent --eval "run %"<cr>
-augroup END
-
-" C options
-set cinoptions=:0,l1,t0,g0,(0   " C-Indent options: K&R style
-set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
-set indentkeys=!<Tab>,o,O
-" }}}
 " --- Editor settings ----------------------------------------------------- {{{
 " Tab settings
 set tabstop=4                     " tab width
 set shiftwidth=4                  " indention
+set softtabstop=4                 " backspace deletes indents
 set expandtab                     " use spaces
 set autoindent                    " autoindent
-set softtabstop=4                 " backspace deletes indents
 
 " Line break settings
 set wrap                          " soft wrap
@@ -243,6 +214,36 @@ set laststatus=2                  " always show status bar
 set nonumber                      " line numbering
 
 syntax enable
+" }}}
+" --- Filetypes ----------------------------------------------------------- {{{
+augroup filetypedetect
+    au! BufNewFile,BufRead *.wiki   setf     wiki
+    au! BufNewFile,BufRead *.ino    setlocal ft=cpp
+    au! BufNewFile,BufRead *.md     setlocal ft=markdown
+    au! BufNewFile,BufRead *.vala   setlocal ft=vala
+    au! BufNewFile,BufRead *.jemdoc setlocal ft=jemdoc
+    au! BufNewFile,BufRead *.tex    setlocal ft=tex
+    au! BufNewFile,BufRead *.psm    setlocal ft=asm
+    au! BufRead,BufNewFile *.ucf    setlocal ft=conf
+    au! BufNewFile,BufRead *.org    call org#SetOrgFileType()
+augroup END
+
+augroup settingsforfiletypes
+    au! FileType asm setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
+    au! FileType python setlocal autoindent tabstop=4 shiftwidth=4
+    au! FileType perl setlocal ft=perl6
+    au! FileType cpp setlocal ft=c
+    au! FileType c setlocal ts=8 sts=8 sw=8
+augroup END
+
+augroup keymapforfiletypes
+    au! BufNewFile,BufRead *.m               nnoremap <buffer> <leader>ll :!octave --silent --eval "run %"<cr>
+augroup END
+
+" C options
+set cinoptions=:0,l1,t0,g0,(0   " C-Indent options: K&R style
+set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
+set indentkeys=!<Tab>,o,O
 " }}}
 " --- Statusline setup ---------------------------------------------------- {{{
 function! SyntaxItem()
