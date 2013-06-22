@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/home/soren/git/dotfiles/.emacs.d/.emacs.d'
 let g:netrw_dirhist_2='/home/soren/.conky'
+let g:netrw_dirhist_3='/home/soren/svn/project1/code/Access control'

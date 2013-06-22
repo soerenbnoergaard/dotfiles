@@ -15,7 +15,7 @@ function! sncolor:SwapTheme()
     endif
     if g:myTheme == 2
         set background=dark
-        colorscheme oxygen
+        colorscheme zmrok
     endif
     if g:myTheme == 3
         set background=light
@@ -121,7 +121,6 @@ nnoremap <Leader>mru :MRU<CR>
 nnoremap + :
 noremap <Leader>/ <Esc>:let @/=""<CR>
 noremap <Leader>7 <Esc>:let @/=""<CR>
-nnoremap / /\v
 nnoremap j gj
 nnoremap k gk
 nnoremap <F12> :call MySpellLang()<CR>
@@ -233,7 +232,7 @@ augroup settingsforfiletypes
     au! FileType python setlocal autoindent tabstop=4 shiftwidth=4
     au! FileType perl setlocal ft=perl6
     au! FileType cpp setlocal ft=c
-    au! FileType c setlocal ts=8 sts=8 sw=8
+    au! FileType c setlocal nowrap
 augroup END
 
 augroup keymapforfiletypes
