@@ -158,6 +158,10 @@ nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <Down> <C-e>
+nnoremap <Up> <C-y>
+nnoremap <Left> <C-u>
+nnoremap <Right> <C-d>
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's
@@ -230,7 +234,7 @@ augroup END
 augroup settingsforfiletypes
     au! FileType asm setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
     au! FileType python setlocal autoindent tabstop=4 shiftwidth=4
-    au! FileType perl setlocal ft=perl6
+    au! FileType perl setlocal nowrap
     au! FileType cpp setlocal ft=c
     au! FileType c setlocal nowrap
 augroup END
