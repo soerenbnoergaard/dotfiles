@@ -95,6 +95,7 @@ let g:Tex_IgnoredWarnings =
             \'Missing number, treated as zero.'."\n".
             \'There were undefined references'."\n".
             \'LaTeX Warning:' . "\n".
+            \'LaTeX Font Warning:' . "\n".
             \'Citation %.%# undefined'
 let g:tex_indent_items = 1
 let g:Tex_IgnoreLevel = 8
@@ -158,10 +159,6 @@ nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-nnoremap <Down> <C-e>
-nnoremap <Up> <C-y>
-nnoremap <Left> <C-u>
-nnoremap <Right> <C-d>
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's

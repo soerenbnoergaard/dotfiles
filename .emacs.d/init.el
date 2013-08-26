@@ -10,6 +10,7 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/single_files/")
 (add-to-list 'load-path "~/.emacs.d/colorthemes/")
+(add-to-list 'load-path "~/.emacs.d/matlab-emacs/")
 ;;}}}
 
 ;; Autoload and extra packages 
@@ -22,7 +23,7 @@
       (append '(
                 ("\\.php\\'"                 . php-mode)
                 ("\\.\\(frm\\|bas\\|cls\\)$" . visual-basic-mode)
-                ("\\.m\\'"                   . octave-mode)
+                ("\\.m\\'"                   . matlab-mode)
                 ("\\.cs\\'"                  . csharp-mode)
                 ("\\.ino\\'"                 . c-mode)
                 ("\\.gp$"                    . gnuplot-mode)
@@ -33,6 +34,7 @@
 (autoload 'csharp-mode       "csharp-mode"       "C Sharp Mode"       t)
 (autoload 'c-mode            "cc-mode"           "CC mode"            t)
 (autoload 'ebib              "ebib"              "Ebib"               t)
+(load-library "matlab-load")
 
 ;;}}}
 
@@ -146,11 +148,11 @@
             ))
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (folding-mode t)
-            (local-set-key (kbd "C-c C-<right>") 'folding-show-current-entry) ;; Fold with these keys
-            (local-set-key (kbd "C-c C-<left>")  'folding-hide-current-entry)
-            (local-set-key (kbd "C-c C-<up>")  'folding-whole-buffer)
-            (local-set-key (kbd "C-c C-<down>")  'folding-open-buffer)
+            ;; (folding-mode t)
+            ;; (local-set-key (kbd "C-c C-<right>") 'folding-show-current-entry) ;; Fold with these keys
+            ;; (local-set-key (kbd "C-c C-<left>")  'folding-hide-current-entry)
+            ;; (local-set-key (kbd "C-c C-<up>")  'folding-whole-buffer)
+            ;; (local-set-key (kbd "C-c C-<down>")  'folding-open-buffer)
             ))
 
 ;;}}}
