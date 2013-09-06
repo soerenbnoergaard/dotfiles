@@ -9,7 +9,7 @@
 ;;{{{
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/single_files/")
-(add-to-list 'load-path "~/.emacs.d/colorthemes/")
+;; (add-to-list 'load-path "~/.emacs.d/colorthemes/")
 (add-to-list 'load-path "~/.emacs.d/matlab-emacs/")
 ;;}}}
 
@@ -90,10 +90,13 @@
 ;;{{{
 
 (when window-system 
-  (require 'color-theme)
-  (require 'color-theme-gruber-darker)
-  (color-theme-gruber-darker)
-  (set-default-font "DejaVu Sans Mono-11")
+  ;; (require 'color-theme)
+  ;; (require 'color-theme-gruber-darker)
+  ;; (color-theme-gruber-darker)
+  (load-theme 'deeper-blue)
+
+  ;; (set-default-font "DejaVu Sans Mono-11")
+  (set-default-font "Monaco-12")
   (modify-frame-parameters nil '((wait-for-wm . nil))) ;; Ignore WM geometry change
   )
 

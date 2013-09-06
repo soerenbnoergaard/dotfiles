@@ -49,6 +49,11 @@ alias g='gvim --remote-tab-silent'
 alias picoasm='picoasm -t ~/.picoasm/ROM_form.vhd'
 alias dirclip='pwd|xclip'
 alias octave='octave --silent'
+alias xfiglatex='xfig -specialtext -latexfonts -startlatexFont default'
+alias enda='gtrans.pl en da'
+alias daen='gtrans.pl da en'
+alias enfr='gtrans.pl en fr'
+alias fren='gtrans.pl fr en'
 
 # Git svn
 alias Ci="git commit -a"
