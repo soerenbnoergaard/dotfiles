@@ -1,7 +1,7 @@
 ;; User specific settings 
 ;;{{{
 
-(setq ebib-preload-bib-files (quote ("/home/soren/svn/project4/rap/bib/kilder.bib")))
+(setq ebib-preload-bib-files (quote ("/home/soren/svn/project5/rep/bib/sources.bib")))
 
 ;;}}}
 

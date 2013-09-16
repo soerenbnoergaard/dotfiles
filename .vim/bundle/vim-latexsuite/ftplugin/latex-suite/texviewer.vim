@@ -857,7 +857,7 @@ function! Tex_FindBibFiles()
 		call Tex_Debug(":Tex_FindBibFiles: returning [".bibfiles."]", "view")
 		q
 		" return bibfiles
-		return '/home/soren/svn/project4/rap/bib/kilder.bib' " Soren Hack
+		return '/home/soren/svn/project5/rep/bib/sources.bib' " Soren Hack
 
 	else
 		q

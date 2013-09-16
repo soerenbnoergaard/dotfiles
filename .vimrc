@@ -262,13 +262,14 @@ endif
 " --- GUI/nongui settings ------------------------------------------------- {{{
 if has("gui_running")
     set columns=80 lines=24
-    set guifont=Dina\ 12
+    " set guifont=Dina\ 9
+    set guifont=unifont\ 12
     set guioptions=aegit
     call sncolor:SwapTheme()
     nnoremap <f2> :call sncolor:SwapTheme()<CR>
 else
-    colorscheme default
-    set bg=light
+    " colorscheme default
+    " set bg=light
 endif
 
 if has('win16') || has('win32') || has('win64') || has('win95')

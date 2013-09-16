@@ -1,21 +1,6 @@
 ! vim: fdm=marker foldenable
 ! xrdb -merge ~/.Xdefaults
 !!! Xfig {{{
-!!! Set some defaults for Xfig
-!! Latex in xfig
-! Fig.inches: false
-! Fig.startfontsize: 8
-! Fig.userunit: cm
-! Fig.startgridmode: 1  
-! Fig.startposnmode: 1
-! Fig.landscape: false
-! Fig.paper_size: A4
-! Fig.latexfonts: true
-! Fig.startlatexFont: Default
-! Fig.specialtext: true
-! Fig.zoom: 4.0
-! Fig.exportLanguage: pdftex
-!! Regular settings
 Fig.inches: false
 Fig.startfontsize: 8
 Fig.userunit: cm
@@ -26,12 +11,14 @@ Fig.paper_size: A4
 Fig.startpsFont: Helvetica
 Fig.zoom: 4.0
 Fig.exportLanguage: pdf
+Fig.splash: false
 ! }}}
 !!! xterm {{{
 XTerm*bellIsUrgent:  true
 ! xterm*faceName: TerminalVector ! Dos like font
 xterm*faceName: Ubuntu Mono
-xterm*faceSize: 28
+! xterm*faceSize: 28
+xterm*faceSize: 18
 xterm*loginShell: true
 xterm*vt100*geometry: 80x24
 xterm*saveLines: 2000
@@ -69,8 +56,10 @@ URxvt.saveLines: 12000
 URxvt.depth: 32
 
 ! Font 
-URxvt.font: xft:Dina:size=12
-URxvt.boldFont: xft:Dina:bold:size=12
+! URxvt.font: xft:Dina:size=9
+! URxvt.boldFont: xft:Dina:bold:size=9
+URxvt.font: xft:unifont:size=12
+URxvt.boldFont: xft:unifont:bold:size=12
 
 ! Scroll
 URxvt.scrollBar: false
