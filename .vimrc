@@ -159,6 +159,7 @@ nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <leader>ou :TToC<cr>
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's
@@ -243,7 +244,7 @@ augroup END
 " C options
 set cinoptions=:0,l1,t0,g0,(0   " C-Indent options: K&R style
 set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
-set indentkeys=!<Tab>,o,O
+" set indentkeys=!<Tab>,o,O
 " }}}
 " --- Statusline setup ---------------------------------------------------- {{{
 function! SyntaxItem()
