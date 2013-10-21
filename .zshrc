@@ -1,7 +1,8 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 unsetopt correct_all
-export TERM=xterm-256color
+export TERM=rxvt-unicode-256color
+# export TERM=xterm-256color
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -54,6 +55,12 @@ alias enda='gtrans.pl en da'
 alias daen='gtrans.pl da en'
 alias enfr='gtrans.pl en fr'
 alias fren='gtrans.pl fr en'
+alias rpn='~/bin/local/c_rpn/rpn'
+alias b269music='ncmpcpp'
+alias aaucies='cd /home/soren/Dropbox/AAU/cies/'
+alias aausp='cd /home/soren/Dropbox/AAU/sp/'
+alias aaumc='cd /home/soren/Dropbox/AAU/mc/'
+
 
 # Git svn
 alias Ci="git commit -a"

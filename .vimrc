@@ -83,7 +83,7 @@ set grepprg=grep\ -nH\ $*
 filetype indent on
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_Folding=0
+let g:Tex_Folding=1
 let Tex_FoldedEnvironments=''          " fold only sections
 let Tex_FoldedCommands=''
 let Tex_FoldedMisc='preamble'
@@ -117,7 +117,6 @@ nnoremap <Leader>mk :make<CR>
 nnoremap <Leader>ru :!./%<<CR>
 nnoremap <Leader>fo :set guifont=*<CR>
 nnoremap <F10> :NERDTreeToggle<CR>
-nnoremap <Leader>bu :buffers<CR>
 nnoremap <Leader>mru :MRU<CR>
 nnoremap + :
 noremap <Leader>/ <Esc>:let @/=""<CR>
@@ -138,10 +137,6 @@ xnoremap <Leader>ca :!octave --silent \| cut -c8-<cr>
 nnoremap <leader>td :TaskList<CR>
 nnoremap <leader>pa :exec "w !vpaste ft=".&ft<CR>
 vnoremap <leader>pa <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
-vnoremap <leader>go <Esc>:exec
-            \ ":!chromium http://www.google.com/search?q=\""
-            \ . substitute(@*,"\\W\\+\\\\|\\<\\w\\>"," ","g")
-            \ . "\""<CR><CR>
 nnoremap <leader>so :call sn:ScrollCenter()<CR>
 nnoremap <C-d> <C-d>M
 nnoremap <C-u> <C-u>M
@@ -153,8 +148,8 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 vnoremap <leader>lc :normal 0i// <esc>$
 nnoremap <leader>lc :normal 0i// <esc>$
-"
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+"
 nmap <M-j> mz:m+<cr>`z 
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
@@ -194,7 +189,7 @@ set linebreak                     " wrap words
 " Search and macro settings
 set incsearch                     " search as you type
 set ignorecase                    " case sensitive on search
-set hlsearch                      " highlight search results
+set nohlsearch                    " highlight search results
 set lazyredraw                    " when executing macros, don't redraw
 
 " Compatiliy settings
@@ -211,8 +206,9 @@ set nofoldenable                  " don't fold
 set foldmethod=syntax             " fold based on indent
 set foldnestmax=2                 " deepest fold
 set foldlevel=0                   " folded or not?
-set laststatus=2                  " always show status bar
+set laststatus=1                  " status bar 1=not shown in single, 2=always
 set nonumber                      " line numbering
+set guicursor=a:blinkon0          " blinking cursor.
 
 syntax enable
 " }}}
@@ -233,12 +229,14 @@ augroup settingsforfiletypes
     au! FileType asm setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
     au! FileType python setlocal autoindent tabstop=4 shiftwidth=4
     au! FileType perl setlocal nowrap
-    au! FileType cpp setlocal ft=c
     au! FileType c setlocal nowrap
+    au! FileType cpp setlocal nowrap
 augroup END
 
 augroup keymapforfiletypes
-    au! BufNewFile,BufRead *.m               nnoremap <buffer> <leader>ll :!octave --silent --eval "run %"<cr>
+    au! BufNewFile,BufRead *.m  nnoremap <buffer> <leader>ll :!octave --silent --eval "run %"<cr>
+    au! FileType c nnoremap <buffer> <leader>ll :!gcc -lm % -o %< <cr>
+    au! FileType cpp nnoremap <buffer> <leader>ll :!g++  % -o %< <cr>
 augroup END
 
 " C options
@@ -265,11 +263,12 @@ if has("gui_running")
     set columns=80 lines=24
     " set guifont=Dina\ 9
     set guifont=unifont\ 12
-    set guioptions=aegit
+    " set guioptions=aegit
+    set guioptions=aegitTm
     call sncolor:SwapTheme()
     nnoremap <f2> :call sncolor:SwapTheme()<CR>
 else
-    " colorscheme default
+    colorscheme peachpuff
     " set bg=light
 endif
 
