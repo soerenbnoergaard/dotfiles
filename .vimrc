@@ -51,7 +51,7 @@ function! MySpellLang()
     if g:myLang == 2 | set spell spelllang=en | endif
     echo "language:" g:myLangList[g:myLang]
 endf
-command! Term :!urxvtcd
+command! Term :!terminator </dev/null &>/dev/null &
 
 " toggle comments
 let g:comment_flag = 0 
