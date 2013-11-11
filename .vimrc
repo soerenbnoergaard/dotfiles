@@ -46,9 +46,9 @@ function! MySpellLang()
     "loop through languages
     let g:myLang = g:myLang + 1
     if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
-    if g:myLang == 0 | set nospell | endif
-    if g:myLang == 1 | set spell spelllang=da | endif
-    if g:myLang == 2 | set spell spelllang=en | endif
+    if g:myLang == 0 | setlocal nospell | endif
+    if g:myLang == 1 | setlocal spell spelllang=da | endif
+    if g:myLang == 2 | setlocal spell spelllang=en | endif
     echo "language:" g:myLangList[g:myLang]
 endf
 command! Term :!terminator </dev/null &>/dev/null &
@@ -231,6 +231,8 @@ augroup settingsforfiletypes
     au! FileType perl setlocal nowrap
     au! FileType c setlocal nowrap
     au! FileType cpp setlocal nowrap
+    au! FileType tex syntax spell toplevel | setlocal spell
+    au! BufRead /home/soren/svn/*.tex setlocal spelllang=en_us
 augroup END
 
 augroup keymapforfiletypes
@@ -268,7 +270,7 @@ if has("gui_running")
     call sncolor:SwapTheme()
     nnoremap <f2> :call sncolor:SwapTheme()<CR>
 else
-    colorscheme peachpuff
+    " colorscheme peachpuff
     " set bg=light
 endif
 
