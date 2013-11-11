@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 unsetopt correct_all
-export TERM=rxvt-unicode-256color
+# export TERM=rxvt-unicode-256color
 # export TERM=xterm-256color
 
 # Set name of the theme to load.

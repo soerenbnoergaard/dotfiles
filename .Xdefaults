@@ -2,14 +2,16 @@
 ! xrdb -merge ~/.Xdefaults
 !!! Xfig {{{
 Fig.inches: false
-Fig.startfontsize: 8
+Fig.startfontsize: 10
 Fig.userunit: cm
 Fig.startgridmode: 1  
 Fig.startposnmode: 1
 Fig.landscape: false
 Fig.paper_size: A4
-Fig.startpsFont: Helvetica
-Fig.zoom: 4.0
+Fig.latexfonts: true
+Fig.startpsFont: Default
+Fig.specialtext: true
+Fig.zoom: 3.0
 Fig.exportLanguage: pdf
 Fig.splash: false
 ! }}}
