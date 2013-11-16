@@ -12,7 +12,7 @@ set editor = vim
 set record = +Sent
 set smtp_url=smtp://snarga11@student.aau.dk@smtp.aau.dk:587/
 set smtp_pass=$my_pw_personal
-set realname='Søren Nørgaard (AAU)'
+set realname='Søren Bøgeskov Nørgaard (AAU)'
 set from=snarga11@student.aau.dk
 set hostname="smtp.aau.dk"
 

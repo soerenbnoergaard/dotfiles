@@ -12,7 +12,7 @@ set editor = vim
 ## Send options.
 set smtp_url=smtps://soerenbnoergaard@smtp.gmail.com
 set smtp_pass=$my_pw_personal
-set realname='Søren Nørgaard'
+set realname='Søren Bøgeskov Nørgaard'
 set from=soerenbnoergaard@gmail.com
 set ssl_force_tls = yes
 unset ssl_starttls
