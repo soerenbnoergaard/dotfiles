@@ -264,7 +264,8 @@ endif
 if has("gui_running")
     set columns=80 lines=24
     " set guifont=Dina\ 9
-    set guifont=unifont\ 12
+    " set guifont=unifont\ 12
+    set guifont=Ubuntu\ Mono\ 12
     " set guioptions=aegit
     set guioptions=aegitTm
     call sncolor:SwapTheme()
