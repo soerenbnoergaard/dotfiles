@@ -52,6 +52,7 @@ function! MySpellLang()
     echo "language:" g:myLangList[g:myLang]
 endf
 command! Term :!terminator </dev/null &>/dev/null &
+command! Fileman :!pcmanfm </dev/null &>/dev/null &
 
 " toggle comments
 let g:comment_flag = 0 
@@ -133,6 +134,7 @@ nnoremap <M-v> :e $MYVIMRC<CR>
 nnoremap <Leader>ta :Tabularize /
 vnoremap <Leader>ta :Tabularize /
 nnoremap <Leader>te :Term<CR><CR>
+nnoremap <Leader>fm :Fileman<CR><CR>
 xnoremap <Leader>ca :!octave --silent \| cut -c8-<cr>
 nnoremap <leader>td :TaskList<CR>
 nnoremap <leader>pa :exec "w !vpaste ft=".&ft<CR>

@@ -61,6 +61,7 @@ alias b269music='ncmpcpp'
 alias aaucies='cd /home/soren/Dropbox/AAU/cies/'
 alias aausp='cd /home/soren/Dropbox/AAU/sp/'
 alias aaumc='cd /home/soren/Dropbox/AAU/mc/'
+alias fm='pcmanfm </dev/null &>/dev/null &'
 
 
 # Git svn
