@@ -209,7 +209,7 @@ set foldmethod=syntax             " fold based on indent
 set foldnestmax=2                 " deepest fold
 set foldlevel=0                   " folded or not?
 set laststatus=1                  " status bar 1=not shown in single, 2=always
-set nonumber                      " line numbering
+set number                        " line numbering
 set guicursor=a:blinkon0          " blinking cursor.
 
 syntax enable
@@ -235,6 +235,7 @@ augroup settingsforfiletypes
     au! FileType cpp setlocal nowrap
     au! FileType tex syntax spell toplevel | setlocal spell
     au! BufRead /home/soren/svn/*.tex setlocal spelllang=en_us
+    au! FileType make setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
 augroup END
 
 augroup keymapforfiletypes

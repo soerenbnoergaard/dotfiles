@@ -93,17 +93,16 @@
   ;; (require 'color-theme)
   ;; (require 'color-theme-gruber-darker)
   ;; (color-theme-gruber-darker)
-  (load-theme 'deeper-blue)
+  ;; (load-theme 'deeper-blue)
 
   ;; (set-default-font "DejaVu Sans Mono-11")
-  (set-default-font "Monaco-12")
+  (set-default-font "Monaco-11")
   (modify-frame-parameters nil '((wait-for-wm . nil))) ;; Ignore WM geometry change
   )
 
 (unless window-system
   (menu-bar-mode nil)
-)
-
+  )
 ;;}}}
 
 ;; Hooks 
