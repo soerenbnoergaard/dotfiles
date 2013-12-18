@@ -270,7 +270,7 @@ if has("gui_running")
     " set guifont=unifont\ 12
     set guifont=Tamsyn\ 12
     " set guioptions=aegit
-    set guioptions=aegitTm
+    set guioptions=aegit
     call sncolor:SwapTheme()
     nnoremap <f2> :call sncolor:SwapTheme()<CR>
 else
