@@ -11,19 +11,15 @@ function! sncolor:SwapTheme()
     endif
     if g:myTheme == 1
         set background=dark
-        colorscheme snmolokai
+        colorscheme molokai
     endif
     if g:myTheme == 2
         set background=dark
-        colorscheme zmrok
+        colorscheme snmolokai
     endif
     if g:myTheme == 3
         set background=light
         colorscheme snlight
-    endif
-    if g:myTheme == 4
-        set background=light
-        colorscheme github
     endif
 endf
 
@@ -100,6 +96,7 @@ let g:Tex_IgnoredWarnings =
             \'Citation %.%# undefined'
 let g:tex_indent_items = 1
 let g:Tex_IgnoreLevel = 8
+let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -file-line-error-style $*'
 
 " Nerd tree
 let NERDTreeQuitOnOpen = 1
@@ -120,6 +117,7 @@ nnoremap <Leader>fo :set guifont=*<CR>
 nnoremap <F10> :NERDTreeToggle<CR>
 nnoremap <Leader>mru :MRU<CR>
 nnoremap + :
+vnoremap + :
 noremap <Leader>/ <Esc>:let @/=""<CR>
 noremap <Leader>7 <Esc>:let @/=""<CR>
 nnoremap j gj
@@ -266,9 +264,8 @@ endif
 " --- GUI/nongui settings ------------------------------------------------- {{{
 if has("gui_running")
     set columns=80 lines=24
-    " set guifont=Dina\ 9
-    " set guifont=unifont\ 12
     set guifont=Tamsyn\ 12
+    set guifont=Source\ Code\ Pro\ 11
     " set guioptions=aegit
     set guioptions=aegit
     call sncolor:SwapTheme()

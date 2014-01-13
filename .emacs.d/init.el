@@ -9,7 +9,7 @@
 ;;{{{
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/single_files/")
-;; (add-to-list 'load-path "~/.emacs.d/colorthemes/")
+(add-to-list 'load-path "~/.emacs.d/colorthemes/")
 (add-to-list 'load-path "~/.emacs.d/matlab-emacs/")
 ;;}}}
 
@@ -46,11 +46,11 @@
 ;;{{{
 (setq column-number-mode t)                          ;; Show column numbers
 
-                                        ;------------ Startup
+;------------ Startup
 (setq inhibit-startup-screen t)                      ;; No startup screen
 (setq initial-scratch-message nil)                   ;; No scratch message
 
-                                        ;------------ Behavior
+;------------ Behavior
 (global-auto-revert-mode t)                          ;; Auto revert mode
 (show-paren-mode 1)                                  ;; Show matching parenthesies
 (setq show-paren-style 'parenthesis)
@@ -62,8 +62,9 @@
 (setq delete-by-moving-to-trash t)                   ;; If deleted in folder view, move to trash
 (setq browse-url-browser-function 'browse-url-generic 
       browse-url-generic-program "xdg-open")         ;; Set browser
+(recentf-mode t)                                     ;; Most recent files
 
-                                        ;------------ Tabs
+;------------ Tabs
 (setq-default tab-width 4)                           ;; Use 4 spaces
 (setq-default c-basic-offset 4)                      ;; Use 4 spaces in C
 (setq-default indent-tabs-mode nil)                  ;; Use spaces
@@ -94,9 +95,12 @@
   ;; (require 'color-theme-gruber-darker)
   ;; (color-theme-gruber-darker)
   ;; (load-theme 'deeper-blue)
+  (load "~/.emacs.d/colorthemes/color-theme-molokai.el")
+  (color-theme-molokai)
 
   ;; (set-default-font "DejaVu Sans Mono-11")
-  (set-default-font "Monaco-11")
+  ;; (set-default-font "Monaco-11")
+  (set-default-font "Source Code Pro-11")
   (modify-frame-parameters nil '((wait-for-wm . nil))) ;; Ignore WM geometry change
   )
 
