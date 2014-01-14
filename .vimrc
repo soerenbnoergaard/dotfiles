@@ -264,15 +264,14 @@ endif
 " --- GUI/nongui settings ------------------------------------------------- {{{
 if has("gui_running")
     set columns=80 lines=24
-    set guifont=Tamsyn\ 12
     set guifont=Source\ Code\ Pro\ 11
     " set guioptions=aegit
     set guioptions=aegit
     call sncolor:SwapTheme()
     nnoremap <f2> :call sncolor:SwapTheme()<CR>
 else
-    " colorscheme peachpuff
-    " set bg=light
+    set t_Co=265
+    colorscheme molokai
 endif
 
 if has('win16') || has('win32') || has('win64') || has('win95')
