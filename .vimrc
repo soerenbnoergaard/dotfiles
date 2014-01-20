@@ -148,13 +148,8 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 vnoremap <leader>lc :normal 0i// <esc>$
 nnoremap <leader>lc :normal 0i// <esc>$
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-"
-nmap <M-j> mz:m+<cr>`z 
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-nmap <leader>ou :TToC<cr>
+nnoremap <leader>ou :TToC<cr>
+cnoremap w!! w !sudo tee % >/dev/null
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's

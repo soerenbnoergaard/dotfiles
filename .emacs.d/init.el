@@ -45,6 +45,8 @@
 ;; Editor settings 
 ;;{{{
 (setq column-number-mode t)                          ;; Show column numbers
+(tool-bar-mode nil)
+(menu-bar-mode nil)
 
 ;------------ Startup
 (setq inhibit-startup-screen t)                      ;; No startup screen
