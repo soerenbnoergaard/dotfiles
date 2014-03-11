@@ -47,23 +47,97 @@ function! MySpellLang()
     if g:myLang == 2 | setlocal spell spelllang=en | endif
     echo "language:" g:myLangList[g:myLang]
 endf
+
+"   Compile LaTeX for the current file only
+function! LatexCurrent()
+    let a:localLatexCommand = 'echo '
+    let a:localLatexCommand .= '\\input{set/preamble}'
+    let a:localLatexCommand .= '\\input{set/listings}'
+    let a:localLatexCommand .= '\\input{set/macros}'
+    let a:localLatexCommand .= '\\\\begin{document}\\input{'
+    let a:curfile = expand('%:p')
+    let a:localLatexCommand .= a:curfile
+    let a:localLatexCommand .= '}\\\\end{document}'
+    let a:localLatexCommand .= '> /home/soren/svn/project6/rep/masterlocal.tex'
+    echom system(a:localLatexCommand)
+    execute "!cd /home/soren/svn/project6/rep/ && pdflatex masterlocal.tex"
+endf
+
 command! Term :!terminator </dev/null &>/dev/null &
 command! Fileman :!pcmanfm </dev/null &>/dev/null &
 
-" toggle comments
-let g:comment_flag = 0 
-function! MyComment()
-    if g:comment_flag == 0 | hi Comment guifg=bg ctermfg=bg | hi SpecialComment guifg=bg ctermfg=bg | endif
-    if g:comment_flag == 1 | colorscheme snmolokai | endif " Soren: Color scheme here.
-    let g:comment_flag = g:comment_flag + 1
-    if g:comment_flag > 1 | let g:comment_flag = 0 | endif
-endf
+function! C2Doxygen()
+    "   Copy line, save return type
+    normal yyP
+    execute("normal f(bi\<CR>")
+    normal k
+    let rettype=getline('.')
+    normal dd
+    
+    "   Save function name
+    execute("normal f(i\<CR>")
 
-function sn:LasseMode()
-    colorscheme snlight
-    set guifont=Ubuntu\ Mono\ 14
+    normal k
+    let function=getline('.')
+    normal dd
+
+    "   Delete ( and )
+    normal xf)
+    normal D
+
+    "   Split up parameters
+    let params = []
+    let line=getline('.')
+    if (!empty(line))
+        "   If multiple parameters
+        while !empty(matchstr(line, ','))
+            execute("normal 0f,xi\<CR>")
+            normal k$Bd0
+            call add(params,getline('.'))
+            normal dd
+            let line=getline('.')
+        endwhile
+        if 0 < len(params)
+            normal $Bd0
+            call add(params,getline('.'))
+            normal dd
+        endif
+
+        "   If 1 parameter only
+        if 0 == len(params)
+            normal $Bd0         
+            call add(params,getline('.'))
+            normal dd
+        endif
+    else
+        normal dd
+    endif
+
+    "   Print header
+    normal O/* 
+    put =function
+    normal kJo 
+    normal o 
+    normal 0D
+    normal i * @brief 
+    normal o
+    normal 0D
+    for i in params
+        normal I * @param 
+        put =i
+        normal kJA 
+        normal o
+        normal 0D
+    endfor
+    if empty(matchstr(rettype, "void"))
+        normal I * @retval 
+        normal o
+    endif
+    normal 0Di */
+    execute("normal ?brief\<CR>A")
 endf
-command LasseMode :call sn:LasseMode()
+command! C2Doxygen :call C2Doxygen()
+
 " }}}
 " --- Plugin settings ----------------------------------------------------- {{{
 call pathogen#infect()       " activate pathogen
@@ -157,7 +231,6 @@ autocmd QuickFixCmdPost [^l]* nested cwindow " Open/close quickfix window
 autocmd QuickFixCmdPost    l* nested lwindow
 
 " Completion by ctrl-n ctrl-p not including tags.
-set complete=.,w,b,u,i
 
 " Use alt key in terminal
 let c='a'
@@ -186,6 +259,7 @@ set incsearch                     " search as you type
 set ignorecase                    " case sensitive on search
 set nohlsearch                    " highlight search results
 set lazyredraw                    " when executing macros, don't redraw
+" set complete=.,w,b,u,i
 
 " Compatiliy settings
 set nocompatible                  " it's 2012 - don't be compatible
@@ -235,6 +309,9 @@ augroup keymapforfiletypes
     au! BufNewFile,BufRead *.m  nnoremap <buffer> <leader>ll :!octave --silent --eval "run %"<cr>
     au! FileType c nnoremap <buffer> <leader>ll :!gcc -lm % -o %< <cr>
     au! FileType cpp nnoremap <buffer> <leader>ll :!g++  % -o %< <cr>
+    au! FileType tex nnoremap <buffer> <leader>lo :call LatexCurrent() <cr><cr>
+    au FileType tex nnoremap <buffer> <leader>lp :!evince "/home/soren/svn/project6/rep/masterlocal.pdf" </dev/null &>/dev/null & <cr><cr>
+    au! Filetype c nnoremap <buffer> <leader>cc :C2Doxygen<cr>
 augroup END
 
 " C options
