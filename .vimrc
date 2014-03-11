@@ -117,6 +117,7 @@ function! C2Doxygen()
     normal O/* 
     put =function
     normal kJo 
+    normal 0DI *
     normal o 
     normal 0D
     normal i * @brief 
