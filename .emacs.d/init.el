@@ -11,6 +11,7 @@
 (add-to-list 'load-path "~/.emacs.d/single_files/")
 (add-to-list 'load-path "~/.emacs.d/colorthemes/")
 (add-to-list 'load-path "~/.emacs.d/matlab-emacs/")
+; (add-to-list 'load-path "~/.emacs.d/evil-mode")
 ;;}}}
 
 ;; Autoload and extra packages 
@@ -18,6 +19,10 @@
 
 (require 'yasnippet-bundle)
 (require 'tex-site)
+; (require 'evil)
+; (require 'evil-numbers)
+; (require 'evil-leader)
+; (require 'surround)
 
 (setq auto-mode-alist 
       (append '(
@@ -65,6 +70,10 @@
 (setq browse-url-browser-function 'browse-url-generic 
       browse-url-generic-program "xdg-open")         ;; Set browser
 (recentf-mode t)                                     ;; Most recent files
+(ido-mode t)
+; (global-evil-leader-mode)
+; (evil-mode 1)
+; (global-surround-mode 1)
 
 ;------------ Tabs
 (setq-default tab-width 4)                           ;; Use 4 spaces
@@ -93,15 +102,10 @@
 ;;{{{
 
 (when window-system 
-  ;; (require 'color-theme)
-  ;; (require 'color-theme-gruber-darker)
-  ;; (color-theme-gruber-darker)
-  ;; (load-theme 'deeper-blue)
-  (load "~/.emacs.d/colorthemes/color-theme-molokai.el")
-  (color-theme-molokai)
+  (require 'color-theme)
+  (require 'color-theme-gruber-darker)
+  (color-theme-gruber-darker)
 
-  ;; (set-default-font "DejaVu Sans Mono-11")
-  ;; (set-default-font "Monaco-11")
   (set-default-font "Source Code Pro-11")
   (modify-frame-parameters nil '((wait-for-wm . nil))) ;; Ignore WM geometry change
   )
@@ -111,9 +115,8 @@
   )
 ;;}}}
 
-;; Hooks 
+;; Hooks
 ;;{{{
-
 (add-hook 'c-mode-common-hook 
           (lambda()
             (setq tab-width 4)
@@ -154,15 +157,6 @@
             (load "auctex.el" nil t t)
             (tex-pdf-mode t)
             ))
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            ;; (folding-mode t)
-            ;; (local-set-key (kbd "C-c C-<right>") 'folding-show-current-entry) ;; Fold with these keys
-            ;; (local-set-key (kbd "C-c C-<left>")  'folding-hide-current-entry)
-            ;; (local-set-key (kbd "C-c C-<up>")  'folding-whole-buffer)
-            ;; (local-set-key (kbd "C-c C-<down>")  'folding-open-buffer)
-            ))
-
 ;;}}}
 
 ;; Keymapping 
@@ -171,7 +165,12 @@
 (global-set-key [f9] 'ispell-word)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
-
+; (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+; (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
+; (evil-leader/set-leader ",")
+; (evil-leader/set-key
+;   "mk" 'compile
+;   "mru" 'recentf-open-files)
 ;;}}}
 
 ;; Tmux collaborative editing 
@@ -188,7 +187,7 @@
 ;; (global-set-key (kbd "<f5>") 'highlight-changes-previous-change)
 ;; (global-set-key (kbd "<f6>") 'highlight-changes-next-change)
 ;; (global-set-key (kbd "<f7>") 'highlight-changes-rotate-faces)
-;; (global-set-key (kbd "<f8>") 'highlight-changes-remove-highlight)
+
 
 ;; The following has to be done
 ;; for this to work:

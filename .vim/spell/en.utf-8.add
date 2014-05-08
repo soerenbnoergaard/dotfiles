@@ -40,3 +40,11 @@ sidelobe
 sidelobes
 gaussian
 BT
+GFSK
+GCPFSK
+downconvert
+upconverted
+downconverted
+upconverting
+downconversion
+extremum

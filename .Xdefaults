@@ -19,8 +19,9 @@ Fig.specialtext: false
 ! }}}
 !!! xterm {{{
 XTerm*bellIsUrgent:  true
-! xterm*faceName: TerminalVector ! Dos like font
-xterm*faceName: Ubuntu Mono
+! Dos like font
+xterm*faceName: TerminalVector
+! xterm*faceName: Ubuntu Mono
 ! xterm*faceSize: 28
 xterm*faceSize: 18
 xterm*loginShell: true

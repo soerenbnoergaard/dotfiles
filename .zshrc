@@ -40,8 +40,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias ls='ls --color=auto'
-alias ll='ls -lh'
-alias lla='ls -lah'
+alias ll="ls -lh"
+alias lla="ls -lah"
 alias v='vim'
 alias pico='nano'
 alias p6='cd /home/soren/svn/project6'
@@ -62,6 +62,7 @@ alias fm='pcmanfm </dev/null &>/dev/null &'
 alias afsstart='kinit snarga11 && aklog ies.auc.dk'
 alias SU='svn update'
 alias SC='svn commit -m "Autocommitting..."'
+alias SS='svn status'
 
 # Git svn
 alias Ci="git commit -a"

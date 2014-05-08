@@ -1,0 +1,1 @@
+tagbar.vmb: call delete('/home/soren/.vim/bundle/vim-tagbar//README.md')|call delete('/home/soren/.vim/bundle/vim-tagbar//autoload/tagbar.vim')|call delete('/home/soren/.vim/bundle/vim-tagbar//doc/tagbar.txt')|call delete('/home/soren/.vim/bundle/vim-tagbar//plugin/tagbar.vim')|call delete('/home/soren/.vim/bundle/vim-tagbar//syntax/tagbar.vim')

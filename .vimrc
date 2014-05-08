@@ -1,30 +1,22 @@
 " vim: fdm=marker foldenable
 " --- Custom functions and Commands --------------------------------------- {{{
 " Swap color theme - dark/light
-let g:myTheme = 0
-function! sncolor:SwapTheme()
+let g:myTheme = -1
+function! SwapTheme()
     let g:myTheme = g:myTheme + 1
-    if g:myTheme >= 5   | let g:myTheme = 0         | endif
+    if g:myTheme > 1 | let g:myTheme = 0 | endif
     if g:myTheme == 0
         set background=light
         colorscheme default
     endif
     if g:myTheme == 1
         set background=dark
-        colorscheme molokai
-    endif
-    if g:myTheme == 2
-        set background=dark
         colorscheme snmolokai
-    endif
-    if g:myTheme == 3
-        set background=light
-        colorscheme snlight
     endif
 endf
 
 let g:ScrollCenter = 0
-function! sn:ScrollCenter()
+function! ScrollCenter()
     let g:ScrollCenter = g:ScrollCenter + 1
     if g:ScrollCenter > 1 | let g:ScrollCenter = 0 | endif
     if g:ScrollCenter == 0
@@ -54,13 +46,14 @@ function! LatexCurrent()
     let a:localLatexCommand .= '\\input{set/preamble}'
     let a:localLatexCommand .= '\\input{set/listings}'
     let a:localLatexCommand .= '\\input{set/macros}'
-    let a:localLatexCommand .= '\\\\begin{document}\\input{'
+    let a:localLatexCommand .= '\\\\begin{document}'
+    let a:localLatexCommand .= '\\pagenumbering{arabic}\\input{'
     let a:curfile = expand('%:p')
     let a:localLatexCommand .= a:curfile
     let a:localLatexCommand .= '}\\\\end{document}'
     let a:localLatexCommand .= '> /home/soren/svn/project6/rep/masterlocal.tex'
     echom system(a:localLatexCommand)
-    execute "!cd /home/soren/svn/project6/rep/ && pdflatex masterlocal.tex"
+    execute "!cd /home/soren/svn/project6/rep/ && pdflatex -shell-escape masterlocal.tex"
 endf
 
 command! Term :!terminator </dev/null &>/dev/null &
@@ -114,7 +107,9 @@ function! C2Doxygen()
     endif
 
     "   Print header
-    normal O/* 
+    normal O/** 
+    normal o
+    normal 0DI *
     put =function
     normal kJo 
     normal 0DI *
@@ -138,6 +133,18 @@ function! C2Doxygen()
     execute("normal ?brief\<CR>A")
 endf
 command! C2Doxygen :call C2Doxygen()
+
+let g:Linenumbers= 0
+function! ToggleLinenumber()
+    let g:Linenumbers = g:Linenumbers + 1
+    if g:Linenumbers > 1 | let g:Linenumbers = 0 | endif
+    if g:Linenumbers == 0
+        set nonumber
+    endif
+    if g:Linenumbers == 1
+        set number
+    endif
+endf
 
 " }}}
 " --- Plugin settings ----------------------------------------------------- {{{
@@ -172,6 +179,7 @@ let g:Tex_IgnoredWarnings =
 let g:tex_indent_items = 1
 let g:Tex_IgnoreLevel = 8
 let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -file-line-error-style $*'
+" let g:Tex_
 
 " Nerd tree
 let NERDTreeQuitOnOpen = 1
@@ -179,9 +187,6 @@ let NERDTreeMinimalUI  = 1
 
 " STD_C plugin
 let c_C99 = 1
-
-" Task list plugin
-let g:tlWindowPosition = 1
 
 " }}}
 " --- Keymapping ---------------------------------------------------------- {{{
@@ -212,7 +217,7 @@ xnoremap <Leader>ca :!octave --silent \| cut -c8-<cr>
 nnoremap <leader>td :TaskList<CR>
 nnoremap <leader>pa :exec "w !vpaste ft=".&ft<CR>
 vnoremap <leader>pa <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
-nnoremap <leader>so :call sn:ScrollCenter()<CR>
+nnoremap <leader>so :call ScrollCenter()<CR>
 nnoremap <C-d> <C-d>M
 nnoremap <C-u> <C-u>M
 nnoremap <C-f> <C-f>M
@@ -225,6 +230,15 @@ vnoremap <leader>lc :normal 0i// <esc>$
 nnoremap <leader>lc :normal 0i// <esc>$
 nnoremap <leader>ou :TToC<cr>
 cnoremap w!! w !sudo tee % >/dev/null
+nnoremap <leader>nn :call ToggleLinenumber()<CR>
+nnoremap <f1> :!ctags -R .<cr><cr>
+nnoremap <C-]> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <f8> :TagbarOpenAutoClose<cr>
+nnoremap <leader><leader> :CommandT<cr>
+nnoremap <leader>gy :Goyo<cr>
+nnoremap <leader>sc go+=rR
+nnoremap <leader>cn :cn<cr>
+nnoremap <leader>cp :cp<cr>
 " }}}
 " --- Added functionality ------------------------------------------------- {{{
 autocmd BufEnter * silent! lcd %:p:h " Change directory to buffer's
@@ -247,12 +261,11 @@ set timeout ttimeoutlen=50
 " Tab settings
 set tabstop=4                     " tab width
 set shiftwidth=4                  " indention
-set softtabstop=4                 " backspace deletes indents
 set expandtab                     " use spaces
 set autoindent                    " autoindent
 
 " Line break settings
-set wrap                          " soft wrap
+set nowrap                        " soft wrap
 set linebreak                     " wrap words
 
 " Search and macro settings
@@ -260,7 +273,6 @@ set incsearch                     " search as you type
 set ignorecase                    " case sensitive on search
 set nohlsearch                    " highlight search results
 set lazyredraw                    " when executing macros, don't redraw
-" set complete=.,w,b,u,i
 
 " Compatiliy settings
 set nocompatible                  " it's 2012 - don't be compatible
@@ -276,8 +288,8 @@ set nofoldenable                  " don't fold
 set foldmethod=syntax             " fold based on indent
 set foldnestmax=2                 " deepest fold
 set foldlevel=0                   " folded or not?
-set laststatus=1                  " status bar 1=not shown in single, 2=always
-set number                        " line numbering
+set laststatus=2                  " status bar 1=not shown in single, 2=always
+set nonumber                      " line numbering
 set guicursor=a:blinkon0          " blinking cursor.
 
 syntax enable
@@ -296,23 +308,24 @@ augroup filetypedetect
 augroup END
 
 augroup settingsforfiletypes
-    au! FileType asm setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
-    au! FileType python setlocal autoindent tabstop=4 shiftwidth=4
-    au! FileType perl setlocal nowrap
-    au! FileType c setlocal nowrap
-    au! FileType cpp setlocal nowrap
-    au! FileType tex syntax spell toplevel | setlocal spell
-    au! BufRead /home/soren/svn/*.tex setlocal spelllang=en_us
-    au! FileType make setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
+    au FileType asm setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
+    au FileType python setlocal autoindent tabstop=4 shiftwidth=4
+    au FileType tex syntax spell toplevel | setlocal spell wrap
+    au BufRead /home/soren/svn/*.tex setlocal spelllang=en_us
+    au FileType make setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
+    au Filetype jemdoc setlocal wrap
+    au Filetype markdown setlocal wrap
 augroup END
 
 augroup keymapforfiletypes
     au! BufNewFile,BufRead *.m  nnoremap <buffer> <leader>ll :!octave --silent --eval "run %"<cr>
     au! FileType c nnoremap <buffer> <leader>ll :!gcc -lm % -o %< <cr>
+    au Filetype c nnoremap <buffer> <leader>cc :C2Doxygen<cr>
     au! FileType cpp nnoremap <buffer> <leader>ll :!g++  % -o %< <cr>
+    au Filetype cpp nnoremap <buffer> <leader>cc :C2Doxygen<cr>
     au! FileType tex nnoremap <buffer> <leader>lo :call LatexCurrent() <cr><cr>
     au FileType tex nnoremap <buffer> <leader>lp :!evince "/home/soren/svn/project6/rep/masterlocal.pdf" </dev/null &>/dev/null & <cr><cr>
-    au! Filetype c nnoremap <buffer> <leader>cc :C2Doxygen<cr>
+    au FileType matlab match Underlined /%%.*/
 augroup END
 
 " C options
@@ -320,31 +333,23 @@ set cinoptions=:0,l1,t0,g0,(0   " C-Indent options: K&R style
 set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
 " set indentkeys=!<Tab>,o,O
 " }}}
-" --- Statusline setup ---------------------------------------------------- {{{
-function! SyntaxItem()
-    return synIDattr(synID(line("."),col("."),1),"name")
-endfunction
-
-if has ('statusline')
-    set statusline=%f                          " file name
-    set statusline+=%=                         " right adjust
-    set statusline+=\                          " offset
-    set statusline+=[%{SyntaxItem()}]\         " syntax group
-    set statusline+=%{strlen(&ft)?&ft:'none'}, " file type
-    set statusline+=%-7.(%l,%c%V%)\ %<%P       " cursor position/offset
-endif
-" }}}
 " --- GUI/nongui settings ------------------------------------------------- {{{
 if has("gui_running")
-    set columns=80 lines=24
+    set columns=90 lines=40
     set guifont=Source\ Code\ Pro\ 11
     " set guioptions=aegit
     set guioptions=aegit
-    call sncolor:SwapTheme()
-    nnoremap <f2> :call sncolor:SwapTheme()<CR>
+    nnoremap <f2> :call SwapTheme()<CR>
+
+    " dusk
+    " brookstream
+    " tir_black
+    " jammy
+    " jellybeans
+    colorscheme jellybeans
 else
     set t_Co=265
-    colorscheme molokai
+    colorscheme peachpuff
 endif
 
 if has('win16') || has('win32') || has('win64') || has('win95')
@@ -353,5 +358,12 @@ if has('win16') || has('win32') || has('win64') || has('win95')
     endif
     set clipboard+=unnamed
 else
+endif
+" }}}
+" --- Statusline setup ---------------------------------------------------- {{{
+if has ('statusline')
+    hi User1 term=underline cterm=bold ctermfg=Cyan ctermbg=Blue guifg=#40ffff guibg=#0000aa
+    set statusline=%1*%f\ \ \ \ \ \ \ \ %P\ (%l,%c)\ \ \ \ \ \ (%Y)
+    set statusline=%f\ \ \ \ \ \ \ \ %P\ (%l,%c)\ \ \ \ \ \ (%Y)
 endif
 " }}}
