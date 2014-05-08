@@ -50,8 +50,8 @@
 ;; Editor settings 
 ;;{{{
 (setq column-number-mode t)                          ;; Show column numbers
-(tool-bar-mode nil)
-(menu-bar-mode nil)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 
 ;------------ Startup
 (setq inhibit-startup-screen t)                      ;; No startup screen
@@ -71,9 +71,6 @@
       browse-url-generic-program "xdg-open")         ;; Set browser
 (recentf-mode t)                                     ;; Most recent files
 (ido-mode t)
-; (global-evil-leader-mode)
-; (evil-mode 1)
-; (global-surround-mode 1)
 
 ;------------ Tabs
 (setq-default tab-width 4)                           ;; Use 4 spaces

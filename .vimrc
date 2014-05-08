@@ -282,6 +282,7 @@ set encoding=utf-8                " use utf8 encoding
 set clipboard=unnamedplus         " use system clipboard, unix
 set ofu=syntaxcomplete#Complete   " omnicompletion on
 set autoread                      " auto read if file changes outside
+set shortmess+=I                  " remove startup message
 
 " Layout settings
 set nofoldenable                  " don't fold
@@ -290,7 +291,6 @@ set foldnestmax=2                 " deepest fold
 set foldlevel=0                   " folded or not?
 set laststatus=2                  " status bar 1=not shown in single, 2=always
 set nonumber                      " line numbering
-set guicursor=a:blinkon0          " blinking cursor.
 
 syntax enable
 " }}}
@@ -318,14 +318,18 @@ augroup settingsforfiletypes
 augroup END
 
 augroup keymapforfiletypes
-    au! BufNewFile,BufRead *.m  nnoremap <buffer> <leader>ll :!octave --silent --eval "run %"<cr>
-    au! FileType c nnoremap <buffer> <leader>ll :!gcc -lm % -o %< <cr>
+    au FileType c nnoremap <buffer> <leader>ll :!gcc -lm % -o %< <cr>
     au Filetype c nnoremap <buffer> <leader>cc :C2Doxygen<cr>
-    au! FileType cpp nnoremap <buffer> <leader>ll :!g++  % -o %< <cr>
+    au FileType cpp nnoremap <buffer> <leader>ll :!g++  % -o %< <cr>
     au Filetype cpp nnoremap <buffer> <leader>cc :C2Doxygen<cr>
-    au! FileType tex nnoremap <buffer> <leader>lo :call LatexCurrent() <cr><cr>
+    au FileType tex nnoremap <buffer> <leader>lo :call LatexCurrent() <cr><cr>
     au FileType tex nnoremap <buffer> <leader>lp :!evince "/home/soren/svn/project6/rep/masterlocal.pdf" </dev/null &>/dev/null & <cr><cr>
+    au FileType matlab nnoremap <buffer> <leader>ll :!octave --silent --eval "run %"<cr>
     au FileType matlab match Underlined /%%.*/
+augroup END
+
+augroup colorschemes
+    au ColorScheme * hi clear NonText | hi link NonText Ignore 
 augroup END
 
 " C options
@@ -336,8 +340,8 @@ set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
 " --- GUI/nongui settings ------------------------------------------------- {{{
 if has("gui_running")
     set columns=90 lines=40
+    set foldcolumn=1
     set guifont=Source\ Code\ Pro\ 11
-    " set guioptions=aegit
     set guioptions=aegit
     nnoremap <f2> :call SwapTheme()<CR>
 
@@ -350,13 +354,15 @@ if has("gui_running")
 else
     set t_Co=265
     colorscheme peachpuff
+    hi NonText ctermfg=16
 endif
 
 if has('win16') || has('win32') || has('win64') || has('win95')
+    set clipboard+=unnamed
+
     if has ("gui_running")
         set guifont=Bitstream_Vera_Sans_Mono:h10
     endif
-    set clipboard+=unnamed
 else
 endif
 " }}}
