@@ -315,6 +315,8 @@ augroup settingsforfiletypes
     au FileType make setlocal autoindent noexpandtab tabstop=8 shiftwidth=8
     au Filetype jemdoc setlocal wrap
     au Filetype markdown setlocal wrap
+    au Filetype c syn keyword cType fract16 fract32 fract64
+    au Filetype c syn keyword cType complex_fract16 complex_fract32 complex_fract64
 augroup END
 
 augroup keymapforfiletypes
