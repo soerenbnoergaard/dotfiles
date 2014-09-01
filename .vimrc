@@ -11,7 +11,7 @@ function! SwapTheme()
     endif
     if g:myTheme == 1
         set background=dark
-        colorscheme snmolokai
+        colorscheme jellybeans
     endif
 endf
 
@@ -229,7 +229,7 @@ vnoremap <F1> <ESC>
 vnoremap <leader>lc :normal 0i// <esc>$
 nnoremap <leader>lc :normal 0i// <esc>$
 nnoremap <leader>ou :TToC<cr>
-cnoremap w!! w !sudo tee % >/dev/null
+cnoremap <leader>w !sudo tee % >/dev/null
 nnoremap <leader>nn :call ToggleLinenumber()<CR>
 nnoremap <f1> :!ctags -R .<cr><cr>
 nnoremap <C-]> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
@@ -317,6 +317,8 @@ augroup settingsforfiletypes
     au Filetype markdown setlocal wrap
     au Filetype c syn keyword cType fract16 fract32 fract64
     au Filetype c syn keyword cType complex_fract16 complex_fract32 complex_fract64
+    au Filetype cpp syn keyword cType fract16 fract32 fract64
+    au Filetype cpp syn keyword cType complex_fract16 complex_fract32 complex_fract64
 augroup END
 
 augroup keymapforfiletypes
@@ -343,7 +345,7 @@ set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e
 if has("gui_running")
     set columns=90 lines=40
     set foldcolumn=1
-    set guifont=Source\ Code\ Pro\ 11
+    set guifont=Source\ Code\ Pro\ 10
     set guioptions=aegit
     nnoremap <f2> :call SwapTheme()<CR>
 
@@ -354,9 +356,10 @@ if has("gui_running")
     " jellybeans
     colorscheme jellybeans
 else
-    set t_Co=265
-    colorscheme peachpuff
-    hi NonText ctermfg=16
+    set t_Co=256
+    colorscheme jellybeans
+    " colorscheme peachpuff
+    " hi NonText ctermfg=16
 endif
 
 if has('win16') || has('win32') || has('win64') || has('win95')

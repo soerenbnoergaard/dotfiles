@@ -42,10 +42,12 @@ source $ZSH/oh-my-zsh.sh
 alias ls='ls --color=auto'
 alias ll="ls -lh"
 alias lla="ls -lah"
-alias v='vim'
 alias pico='nano'
-alias p6='cd /home/soren/svn/project6'
-alias rep='cd /home/soren/svn/project6/rep'
+alias p7='cd /home/soren/svn/project7'
+alias art='cd /home/soren/svn/project7/article'
+alias wor='cd /home/soren/svn/project7/worksheets'
+alias pos='cd /home/soren/svn/project7/poster'
+alias pres='cd /home/soren/svn/project6/presentation'
 alias g='gvim --remote-tab-silent'
 alias v='vim --remote-tab-silent'
 alias picoasm='picoasm -t ~/.picoasm/ROM_form.vhd'
@@ -61,7 +63,7 @@ alias b269music='ncmpcpp'
 alias fm='pcmanfm </dev/null &>/dev/null &'
 alias afsstart='kinit snarga11 && aklog ies.auc.dk'
 alias SU='svn update'
-alias SC='svn commit -m "Autocommitting..."'
+alias SC='svn commit'
 alias SS='svn status'
 
 # Git svn
@@ -70,6 +72,7 @@ alias Up="git svn rebase"
 alias Pu="git svn dcommit"
 
 export EDITOR=vim
+export SVN_EDITOR=nano
 export WINEDEBUG=-all
 export GIT_AUTHOR_EMAIL="soerenbnoergaard@gmail.com"
 export GIT_COMMITTER_EMAIL="soerenbnoergaard@gmail.com"

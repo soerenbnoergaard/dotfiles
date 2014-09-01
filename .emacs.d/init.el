@@ -83,8 +83,8 @@
 (setq ispell-program-name "hunspell")  
 (setq ispell-local-dictionary-alist
       '(
-        (nil       "[A-Za-zçéêèóôòæøåÇÉÊÈÓÔÒÆØÅ]" "[^A-Za-zçéêèóôòæøåÇÉÊÈÓÔÒÆØÅ]" "" nil ("-d" "da_DK") nil utf-8)
-        ("english" "[A-Za-zçéêèóôòæøåÇÉÊÈÓÔÒÆØÅ]" "[^A-Za-zçéêèóôòæøåÇÉÊÈÓÔÒÆØÅ]" "" nil ("-d" "da_DK") nil utf-8)))
+        (nil       "[A-Za-zçéêèóôòæøåÇÉÊÈÓÔÒÆØÅ]" "[^A-Za-zçéêèóôòæøåÇÉÊÈÓÔÒÆØÅ]" "" nil ("-d" "en_US") nil utf-8)
+        ("english" "[A-Za-zçéêèóôòæøåÇÉÊÈÓÔÒÆØÅ]" "[^A-Za-zçéêèóôòæøåÇÉÊÈÓÔÒÆØÅ]" "" nil ("-d" "en_US") nil utf-8)))
 
 (load "folding" 'nomessage 'noerror)
 (folding-mode-add-find-file-hook)
