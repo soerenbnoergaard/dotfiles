@@ -3,7 +3,7 @@ open(INFILE, "<", "/home/soren/.conky/notes.md");
 open(OUTFILE, ">", "/home/soren/.conky/notes.conky");
 
 for(<INFILE>){
-    s/^#\s/\$\{color #D0D032}/;
+    s/^#\s/\$\{color #FF8800}/;
     s/\n/\$color\n/;
     print OUTFILE;
 }

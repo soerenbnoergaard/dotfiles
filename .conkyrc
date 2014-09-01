@@ -120,14 +120,14 @@ text_buffer_size 10000
 # stuff after 'TEXT' will be formatted on screen
 
 TEXT
-${font Zekton:size=16}${color #D06262}${execi 3600 date +"Uge: %V"}$alignr${time  %H:%M:%S} 
-$font${color #888888}Denne uge:
+${font Zekton:size=16}${color #FF8800}${execi 3600 date +"Uge: %V"}$alignr${time  %H:%M:%S} 
+$font${color #FF8800}Denne uge:
 $color${execi 60 cat ~/.cache/kalender-aau-now.txt| iconv -f UTF8 -t ISO885915}
 
-${color #888888}Naeste uge:
+${color #FF8800}Naeste uge:
 $color${execi 60 cat ~/.cache/kalender-aau-next.txt| iconv -f UTF8 -t ISO885915}
 
-${color #62B1D0}${execpi 60 cat ~/.cache/kalender.txt | iconv -f UTF8 -t ISO885915 | sed '/^$/d'}
+${color #888888}${execpi 60 cat ~/.cache/kalender.txt | iconv -f UTF8 -t ISO885915 | sed '/^$/d'}
 
-${font Zekton:size=14}${color #888888}Noter:
+#${font Zekton:size=14}${color #888888}Noter:
 $font$color${execpi 20 sh -c "~/.conky/mkd2conky; cat ~/.conky/notes.conky" | iconv -f UTF8 -t ISO885915}
