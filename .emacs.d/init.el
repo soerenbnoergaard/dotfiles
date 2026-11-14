@@ -12,13 +12,23 @@
 (ido-everywhere 1)
 ;; (fido-vertical-mode t)
 
-(global-set-key (kbd "<f1>") 'compile)
-(global-set-key (kbd "<f2>") 'rgrep)
+(load "~/.emacs.d/sbn-target.el")
 
-(defun sbn-python-mode-hook ()
-  (interactive)
-  (local-set-key [f5] (lambda () (interactive) (save-buffer) (compile (concat "/home/sbn/venv/bin/python " (buffer-name))))))
+(sbn-target-register
+ ""
+ (lambda () (message "(no target selected)"))
+ (lambda () (message "(no target selected)")))
+		     
+(sbn-target-register
+ "make"
+ (lambda () (compile "make -C ."))
+ (lambda () (message "(no execute function registered)")))
 
-(add-hook 'python-mode-hook 'sbn-python-mode-hook)
+(sbn-target-register
+ "python"
+ (lambda () (interactive) (save-buffer) (compile (concat "~/venv/bin/python " (buffer-name))))
+ (lambda () (message "(no execute function registered)")))
 
-
+(global-set-key (kbd "<f5>") 'sbn-target-compile)
+(global-set-key (kbd "<f6>") 'sbn-target-execute)
+(global-set-key (kbd "<f7>") 'sbn-target-set)
