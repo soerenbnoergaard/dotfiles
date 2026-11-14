@@ -1,2 +1,0 @@
-#!/bin/sh
-gpg --no-tty --use-agent -q -d ~/.mutt/gyg.goobookrc.gpg

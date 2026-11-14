@@ -1,1 +1,0 @@
-/home/soren/git/dotfiles/.vim/
