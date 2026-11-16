@@ -15,9 +15,28 @@
   ;; Run "execute" function for target
   (funcall (plist-get (gethash sbn-target-name sbn-target-map) :execute)))
 
-(defun sbn-target-set (name)
+(defun sbn-target-set ()
   ;; Set the current active target
-  (interactive
-   (let (names)
-     (maphash (lambda (key _value) (push key names)) sbn-target-map)
-     (setq sbn-target-name (completing-read "Target: " names nil t)))))
+  (interactive)
+  (let (names)
+    (maphash (lambda (key _value) (push key names)) sbn-target-map)
+    (setq sbn-target-name (completing-read "Target: " names nil t))))
+
+(defun sbn-target-none ()
+  (message "(no action)"))
+
+(defun sbn-target-compile-from-project-root (command)
+  (save-excursion
+    (let ((default-directory (project-root (project-current))))
+      (compile command))))
+
+(defun sbn-target-shell-from-project-root (command)
+  (save-excursion
+    (let ((default-directory (project-root (project-current))))
+      (shell-command command))))
+
+;; Register a default target
+(sbn-target-register
+ ""
+ #'sbn-target-none
+ #'sbn-target-none)
