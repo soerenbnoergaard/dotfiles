@@ -24,12 +24,4 @@
  #'sbn-make-compile
  #'sbn-target-none)
 
-;; (defun sbn-cpp-c--key-hook ()
-;;   (local-set-key (kbd "<f1>") #'sbn-cpp-cppcheck-file)
-;;   (local-set-key (kbd "<f5>") #'sbn-cpp-compile)
-;;   (local-set-key (kbd "<f6>") #'sbn-cpp-execute)
-;;   (local-set-key (kbd "M-<f5>") #'sbn-cpp-compile-variation)
-;;   (local-set-key (kbd "M-<f6>") #'sbn-cpp-execute-variation))
-
-;; (add-hook 'c-mode-hook #'sbn-cpp-c--key-hook)
-;; (add-hook 'c++-mode-hook #'sbn-cpp-c--key-hook)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
