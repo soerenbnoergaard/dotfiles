@@ -22,3 +22,5 @@
  "python"
  #'sbn-python-compile
  #'sbn-target-none)
+
+(sbn-target-register-mode 'python-mode "python")

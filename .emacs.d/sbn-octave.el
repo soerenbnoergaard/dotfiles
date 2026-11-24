@@ -11,3 +11,5 @@
  "octave"
  #'sbn-octave-compile
  #'sbn-target-none)
+
+(sbn-target-register-mode 'octave-mode "octave")
